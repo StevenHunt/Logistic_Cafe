@@ -1,48 +1,34 @@
-<?php
-
+<?php 
     session_start();
-
-    require_once('db_connection.php');
-    include('templates/header.php');
-    include('templates/nav.php');
-
-    // Determines whether variable (username) is set or not. 
-
-    // If username is NOT set in this session: 
-    if(!isset($_SESSION['username'])){
-
-        // Go to login.php
-        header("Location: login.php");
-    }
-
-    else {
-        echo "";
-    }
-
+    require_once 'config/connect.php';
+    include 'inc/header.php'; 
 ?>
 
-<html>
-	
-	<head>
-        
-        <!-- Icon --> 
-        <link rel="shortcut icon" type="image/x-icon" href="Images/favicon.ico" />
-        
-        <!-- CSS -->
-		<link rel="stylesheet" type="text/css" href="../CSS/index.css"/>
-	</head>
-	
-	<body>
-		
-		<img src="Images/Index_Image.jpg" id='image'>
-        
-        <br /> 
-        <br /> 
-        
-        <div id="context">
-            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus tristique quam eu diam feugiat maximus. Nunc lobortis fermentum ex, quis faucibus lacus aliquam vel. Nunc blandit at nisi a suscipit. Integer feugiat, odio vel congue auctor, urna orci lobortis arcu, id iaculis mauris arcu lacinia nisi. Maecenas bibendum nunc a urna porta cursus. Fusce rutrum, nulla ac volutpat placerat, neque tellus hendrerit nibh, et tincidunt dolor risus non mauris. Quisque sit amet aliquam diam, eu tincidunt justo. In hac habitasse platea dictumst. Curabitur commodo tincidunt tincidunt. Vestibulum vel tortor lacinia, volutpat quam ut, egestas ligula. Phasellus feugiat nibh in efficitur varius. Donec condimentum ultricies consectetur. Aenean placerat sapien ac neque egestas pulvinar. Quisque est sem, malesuada vel orci tempus, vestibulum malesuada nisi. In convallis eros enim, tempor fringilla enim hendrerit at.
+<?php include 'inc/nav.php'; ?>
 
-            Pellentesque ac velit nunc. Etiam eu ligula posuere, maximus turpis sed, eleifend metus. Fusce at odio porta, congue est nec, vehicula felis. Donec mattis odio quis turpis euismod, vel bibendum eros hendrerit. Praesent sed lacus eleifend, aliquam neque eu, accumsan felis. Ut et libero blandit, elementum nisl a, condimentum massa. Donec sed tortor at justo tincidunt consectetur. Aenean eu mauris diam. </p>
-         </div>
+	<section id="content">
+		<div class="content-blog">
+			<div class="container">
+				<div class="row">
+					<div class="page_header text-center">
+						<h2>Logistic Cafe &amp; Grill</h2>
+                        <p>Your neighborhood bistro</p>
+					</div>
+					
+                    <div class="col-md-12"></div>
+	
+                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis imperdiet tincidunt. Praesent velit eros, scelerisque sit amet orci et, tempor sagittis magna. In congue neque vel felis sagittis bibendum. Nullam mattis vestibulum odio, vitae viverra tellus molestie vel. Praesent eget consectetur velit. Morbi viverra feugiat cursus. Ut in porta massa, at mattis arcu. Donec id ex id est dictum egestas. Duis dapibus magna ut est maximus placerat. Donec rhoncus feugiat quam, gravida dignissim magna bibendum nec.</p>
 
-<?php include('templates/footer.php'); ?>
+                    <p>Integer vestibulum augue in maximus feugiat. Morbi volutpat vitae turpis at faucibus. Nam lobortis ut leo vel feugiat. Donec scelerisque luctus ipsum, et accumsan enim accumsan non. Mauris tempus ex aliquam aliquam ornare. Cras magna eros, scelerisque at gravida at, iaculis non mi. Sed volutpat odio ut tortor tincidunt iaculis. Vivamus et erat eget nunc consequat blandit. Nulla ut tincidunt tellus. Quisque malesuada risus vitae metus venenatis, eget mollis nunc efficitur. Maecenas pulvinar, erat sed blandit porta, odio urna gravida nulla, accumsan congue nisl magna eget lorem. Nullam eget purus ut dui ornare ornare eu ac erat. Mauris posuere mauris nisl, quis finibus lectus laoreet a. Donec metus turpis, lacinia id imperdiet ut, condimentum ut velit. Curabitur convallis velit lacinia eleifend lobortis.</p>
+
+                    <p>Etiam non felis velit. Praesent blandit sapien arcu. Proin maximus pulvinar metus, ut mollis tortor venenatis quis. Praesent dapibus nisi eu arcu tempor mollis. Pellentesque commodo sed purus eget malesuada. Aliquam sed blandit tortor, quis porta dui. Duis pellentesque, nunc sit amet consectetur eleifend, ex augue lacinia orci, eu ultricies massa nulla eu risus. Suspendisse aliquam est sed felis dictum vulputate. Phasellus rhoncus sapien suscipit odio blandit semper. Curabitur odio diam, pulvinar ac sodales nec, facilisis et ligula. Etiam pharetra nisl ornare orci pharetra convallis. Quisque elementum commodo sem, vitae ornare nulla euismod non.</p>
+
+                    <p>Etiam id diam auctor odio lobortis convallis. Aenean volutpat lectus felis, a condimentum nibh ullamcorper in. Duis finibus ullamcorper urna quis blandit. Etiam egestas quam quis feugiat tincidunt. Proin egestas est ut tempor volutpat. Sed eu metus elementum, tempor ligula elementum, egestas libero. Morbi mollis gravida lacus, in volutpat velit auctor at. Aenean fringilla lacus quis efficitur bibendum. Fusce at porta nisi. Ut id eros in neque sodales consectetur id non nunc. Morbi porttitor massa ac mauris varius bibendum. Donec feugiat condimentum turpis vitae elementum. Suspendisse vel gravida tortor. Aenean semper eget dolor sit amet posuere.</p>
+
+                </div> <!-- Close row --> 
+            </div> <!-- Close container --> 
+        </div> <!-- Close content-blog --> 
+</section>  
+                
+<!-- Footer --> 
+<?php include 'inc/footer.php' ?>
