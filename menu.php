@@ -12,8 +12,18 @@
 			<div class="container">
 				<div class="row">
 					<div class="page_header text-center">
-						<h2>Menu</h2>
-                        <p> </p>
+						<?php      
+						    $cat_id = $_SERVER['QUERY_STRING']; 
+
+						    $sql = "SELECT name FROM category 
+							    WHERE $cat_id";
+
+						    $result = mysqli_query($connection, $sql); 
+
+						    while ($foo=mysqli_fetch_assoc($result)) {
+							    echo $foo['name'] . " Menu"; 
+						    }
+						?>
 					</div>
 					<div class="col-md-12">
 						<div class="row">
@@ -30,24 +40,24 @@
 	
 								$res = mysqli_query($connection, $sql);
 								
-                                while($r = mysqli_fetch_assoc($res)) {
-                                    
-                                    ?>
-                                    <div class="sm-item isotope-item">
-                                        <div class="product">
-                                            <div class="product-thumb">
-                                                <img src="admin/<?php echo $r['thumb']; ?>" class="img-responsive" width="250px" alt="">
-                                                <div class="product-overlay">
-                                                    <span>
-                                                        <a href="single.php?id=<?php echo $r['id']; ?>" class="fa fa-link"></a>
-                                                        <a href="addtocart.php?id=<?php echo $r['id']; ?>" class="fa fa-shopping-cart"></a>
-                                                    </span>					
-                                                </div>
-                                            </div>
-                                            <h2 class="product-title"><a href="single.php?id=<?php echo $r['id']; ?>"><?php echo $r['name']; ?></a></h2>
-                                            <div class="product-price"> $ <?php echo $r['price']; ?><span></span></div>
-                                        </div>
-                                    </div>
+								while($r = mysqli_fetch_assoc($res)) {
+
+							?>
+								    <div class="sm-item isotope-item">
+									<div class="product">
+									    <div class="product-thumb">
+										<img src="admin/<?php echo $r['thumb']; ?>" class="img-responsive" width="250px" alt="">
+										<div class="product-overlay">
+										    <span>
+											<a href="single.php?id=<?php echo $r['id']; ?>" class="fa fa-link"></a>
+											<a href="addtocart.php?id=<?php echo $r['id']; ?>" class="fa fa-shopping-cart"></a>
+										    </span>					
+										</div>
+									    </div>
+									    <h2 class="product-title"><a href="single.php?id=<?php echo $r['id']; ?>"><?php echo $r['name']; ?></a></h2>
+									    <div class="product-price"> $ <?php echo $r['price']; ?><span></span></div>
+									</div>
+								    </div>
 							     <?php } ?>
                                 
 							</div>
