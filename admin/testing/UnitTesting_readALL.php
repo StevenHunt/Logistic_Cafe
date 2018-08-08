@@ -27,7 +27,7 @@
 
             /* Insert table formatting here */
             
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
                 extract($row);
                 
