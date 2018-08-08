@@ -1,7 +1,8 @@
 <?php 
     session_start();
+
     require_once 'config/connect.php';
-    include 'inc/header.php'; 
+    include 'inc/index_header.php'; 
 ?>
 
 <?php include 'inc/nav.php'; ?>
@@ -10,12 +11,9 @@
 		<div class="content-blog">
 			<div class="container">
 				<div class="row">
-					<div class="page_header text-center">
-						<h2>Logistic Cafe &amp; Grill</h2>
-                        <p>Your neighborhood bistro</p>
-					</div>
-					
                     <div class="col-md-12"></div>
+                    
+                    <!-- Add Slider : @NORMA & @LUPE --> 
 	
                     <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin venenatis imperdiet tincidunt. Praesent velit eros, scelerisque sit amet orci et, tempor sagittis magna. In congue neque vel felis sagittis bibendum. Nullam mattis vestibulum odio, vitae viverra tellus molestie vel. Praesent eget consectetur velit. Morbi viverra feugiat cursus. Ut in porta massa, at mattis arcu. Donec id ex id est dictum egestas. Duis dapibus magna ut est maximus placerat. Donec rhoncus feugiat quam, gravida dignissim magna bibendum nec.</p>
 
