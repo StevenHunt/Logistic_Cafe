@@ -1,36 +1,28 @@
-<html>
 
-<head> 
-    
-    <style> 
-        
-	    #footer {
-	        position: fixed; 
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: #000000;
-            color: white;
-        }
+		<div id="footer">
+				    
+				        <div class="copyright"> 
+				            <b><h5 style="padding-left: 10px"> &copy; 2018 Logistic Cafe &amp; Grill. All Rights Reserved. </h5></b>
+				        </div>
+				    
+				        <div class="social"> 
+				            <a href="https://www.twitter.com" target="_blank"><img src="../images/twitter.png"> </a> &nbsp; &nbsp; 
+				            <a href="https://www.facebook.com" target="_blank"><img src="../images/facebook.png"> </a> &nbsp; &nbsp; 
+				            <a href="https://www.linkedin.com" target="_blank"><img src="../images/Linkedin.png"> </a> &nbsp; &nbsp; 
+				            <a href="https://www.instagram.com" target="_blank"><img src="../images/instagram.png"> </a> &nbsp; &nbsp; 
+				        </div>
+				</div>
 
-        a.social {
-            padding: 0px 5px; 
-        }
+		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		 
+		<!-- Latest compiled and minified Bootstrap JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<!-- bootbox library -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 
-        .social {
-            float: right;
-            padding-right: 20px;
-            padding-top: 5px;
-        }
-
-        .copyright {
-            float: left;
-            color: white;
-            padding-left: 20px; 
-        }
-        
-    </style> 
-    
+    <!-- Java Script --> 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/dialogFx.js"></script>
@@ -57,23 +49,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
     <script src="js/gmap.js"></script>
     <script src="js/gmap2.js"></script>
-
-</head>
-<body> 
-    <div id="footer">
-        
-            <div class="copyright"> 
-                <h5 style="padding-left: 10px"> &copy; 2018 Logistic Cafe &amp; Grill. All Rights Reserved. </h5>
-            </div>
-        
-            <div class="social"> 
-                <a href="https://www.twitter.com" target="_blank"><img src="../Images/Footer/twitter.png"> </a> &nbsp; &nbsp; 
-                <a href="https://www.facebook.com" target="_blank"><img src="../Images/Footer/facebook.png"> </a> &nbsp; &nbsp; 
-                <a href="https://www.linkedin.com" target="_blank"><img src="../Images/Footer/Linkedin.png"> </a> &nbsp; &nbsp; 
-                <a href="https://www.instagram.com" target="_blank"><img src="../Images/Footer/instagram.png"> </a> &nbsp; &nbsp; 
-            </div>
-    </div>
-
-
-</body>
+    
+	</body>
 </html>
