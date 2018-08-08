@@ -23,7 +23,7 @@
 **Site Credentials**
 1. [AWS EC2](http://ec2-54-213-179-65.us-west-2.compute.amazonaws.com/)
 
-2. [AWS RDS - phpMyadmin](http://ec2-54-213-179-65.us-west-2.compute.amazonaws.com/)
+2. [AWS RDS - phpMyadmin](http://ec2-54-213-179-65.us-west-2.compute.amazonaws.com/phpmyadmin)
   * Username: root438
   * Password: foobar438
   * Server: Database Server
