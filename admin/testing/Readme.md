@@ -19,6 +19,24 @@
 8. [update(): update_product.php](https://github.com/StevenHunt/Logistic_Cafe/commit/32fa43815377c32bee02e0f1994d22a11c6fbad0)
 
 ---
+
+**Site Credentials**
+1. [AWS EC2](http://ec2-54-213-179-65.us-west-2.compute.amazonaws.com/)
+
+2. [AWS RDS - phpMyadmin](http://ec2-54-213-179-65.us-west-2.compute.amazonaws.com/)
+  * Username: root438
+  * Password: foobar438
+  * Server: Database Server
+  
+3. Customer Login: Please register your own account or use test account: 
+  * Username: test@csumb.edu
+  * Password: foobar
+  
+4. Admin Login (Link to *Admin - Dashboard* on Login Page): 
+  * Username: test@csumb.edu
+  * Password: foobar
+
+---
      
 I designed these test classes to show how implementing an OOP model would help alleviate some common issues when coding
 with PHP and SQL. 
