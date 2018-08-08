@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta name="keywords" content="HTML5 Template" />
-	<meta name="description" content="">
-	<meta name="author" content="">
+	<meta name="description" content="CST438 - Software Engineering Project">
+	<meta name="author" content="Logistic Solutions - Steven H. ">
 
 	<title>Logistic Cafe &amp; Grill</title>
 
@@ -45,9 +45,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
+    
 <body class="multi-page">
-
-<div id="wrapper" class="wrapper">
+    
+    <div id="wrapper" class="wrapper">
     
 	<!-- HEADER -->
 	<header id="header2">
@@ -62,3 +63,12 @@
 					</div>
 				</div>
 			</div>
+            
+            <?php
+                // Header Title 
+                echo "
+                <div class='page-header page_header text-center'>
+                    <h1> L C <span style='color:#ef7c00'> &amp; </span> G - {$page_title}</h1> <br />
+                    <p> {$sub_title} </p>
+                </div>";
+            ?>
