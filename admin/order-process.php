@@ -1,11 +1,11 @@
 <?php
+
 	ob_start();
 	session_start();
 
 	require_once '../config/connect.php';
 
-	if(!isset($_SESSION['email']) & empty($_SESSION['email'])) {
-        
+	if(!isset($_SESSION['email']) & empty($_SESSION['email'])) {        
 		header('location: login.php');
 	}
 ?>
@@ -35,14 +35,12 @@
         }
     }
 ?>
-
-	
 	<!-- CONTENT -->
     <section id="content">
 		<div class="content-blog">
             <div class="page_header text-center">
                 <h2>Order Processing</h2>
-				<p>Do you want to cancel Order?</p>
+				<p>Please process order. </p>
             </div>
             
             <form method="post">
@@ -77,7 +75,8 @@
                                     
                                         $ordres = mysqli_query($connection, $ordsql);
                                         
-                                        while($ordr = mysqli_fetch_assoc($ordres)){ ?>
+                                        while($ordr = mysqli_fetch_assoc($ordres)) { 
+                                    ?>
                                             
                                             <tr>
                                                 <td>
@@ -124,7 +123,6 @@
                 </div>	<!-- Close container --> 	
             </form>		
         </div> <!-- Close content-blog --> 
-	</section>
-
-<!-- Footer --> 
-<?php include 'inc/footer.php' ?>
+</section>
+</body> 
+</html> 
