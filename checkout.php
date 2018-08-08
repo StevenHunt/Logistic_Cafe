@@ -28,7 +28,7 @@
             $payment = filter_var($_POST['payment'], FILTER_SANITIZE_STRING);
             $zip = filter_var($_POST['zipcode'], FILTER_SANITIZE_NUMBER_INT);
 
-            $sql = "SELECT * FROM usersmeta 
+            $sql = "SELECT * FROM usersmeta  
                     WHERE uid=$uid";
 
             $res = mysqli_query($connection, $sql);
