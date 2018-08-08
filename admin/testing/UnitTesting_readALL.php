@@ -34,6 +34,12 @@
                     echo $name};
                     echo $price;
                     echo $description;
+        
+                    $category->id = $category_id;
+                    $category->readName();
+        
+                    echo $category->name;
+                    
             }
             
         // Close table
