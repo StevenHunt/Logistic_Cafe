@@ -1,14 +1,15 @@
 <?php
+
 	ob_start();
 	session_start();
 
 	require_once 'config/connect.php';
 
-	if(!isset($_SESSION['customer']) & empty($_SESSION['customer'])) {
-        
+	if(!isset($_SESSION['customer']) & empty($_SESSION['customer'])) {   
 		header('location: login.php');
 	}
-
+    
+    $page_title = "Account Information"; 
     include 'inc/header.php'; 
     include 'inc/nav.php'; 
     
@@ -17,7 +18,6 @@
 
     if(isset($_POST) & !empty($_POST)){
         
-            $country = filter_var($_POST['country'], FILTER_SANITIZE_STRING);
             $fname = filter_var($_POST['fname'], FILTER_SANITIZE_STRING);
             $lname = filter_var($_POST['lname'], FILTER_SANITIZE_STRING);
             $company = filter_var($_POST['company'], FILTER_SANITIZE_STRING);
@@ -29,20 +29,23 @@
 
             $zip = filter_var($_POST['zipcode'], FILTER_SANITIZE_NUMBER_INT);
 
-            $usql = "UPDATE usersmeta SET country='$country', firstname='$fname', lastname='$lname', address1='$address1', address2='$address2', city='$city', state='$state', zip='$zip', company='$company', mobile='$phone' WHERE uid=$uid";
+            $usql = "UPDATE usersmeta 
+                     SET firstname='$fname', lastname='$lname', address1='$address1', address2='$address2', city='$city', state='$state', zip='$zip', company='$company', mobile='$phone' 
+                     WHERE uid=$uid";
 
             $ures = mysqli_query($connection, $usql) or die(mysqli_error($connection));
 
-            /* Alert Messages */
             if($ures) {
                 $smsg = "Successfully updated your profile!";
 		      }
+        
             else { 
                 $fmsg = "Failed to update your profile.";
 		    }
     }
 
-    $sql = "SELECT * FROM usersmeta 
+    $sql = "SELECT * 
+            FROM usersmeta 
             WHERE uid=$uid";
 
     $res = mysqli_query($connection, $sql);
@@ -52,23 +55,16 @@
 	
 	<!-- CONTENT -->
 	<section id="content">
-		<div class="content-blog">
-            <div class="page_header text-center">
-                <h2>Account Information </h2>
-                <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
-                <?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
-            </div>
-            <form method="post">
+		<div class="content-blog"> 
+                
+            <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
+            <?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
+        </div>
+        <form method="post">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <div class="billing-details">  
-                            
-                            <!-- Country --> 
-                            <label class="">Country </label>
-                            <select name="country" class="form-control">
-                                <option value="USA"> United States</option>
-                            </select>
                             
                             <!-- First and Lastname --> 
                             <div class="clearfix space20"></div>
