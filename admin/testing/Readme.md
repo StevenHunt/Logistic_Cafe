@@ -8,15 +8,15 @@
       
 3. [Unit testing - update()](https://github.com/StevenHunt/Logistic_Cafe/commit/cbf1cf8b433fe9ed8ce75d5c5cadc2e99333661f)
       
-4. [Classes](https://github.com/StevenHunt/Logistic_Cafe/commit/552ffa795a604279fc32d3f7fd76dbbecfad9804)
+4. [Classes: products.php, category.php](https://github.com/StevenHunt/Logistic_Cafe/commit/552ffa795a604279fc32d3f7fd76dbbecfad9804)
       
-5. [readAll() & countAll()](https://github.com/StevenHunt/Logistic_Cafe/commit/a5c930cf1e0ead8790ffcac79887cd00633d9846)
+5. [readAll() & countAll(): index.php](https://github.com/StevenHunt/Logistic_Cafe/commit/a5c930cf1e0ead8790ffcac79887cd00633d9846)
       
-6. [Database Class](https://github.com/StevenHunt/Logistic_Cafe/commit/b209c5767cfe5e7881efe2517fc47fc40ef305bd)
+6. [Database Class: database.php](https://github.com/StevenHunt/Logistic_Cafe/commit/b209c5767cfe5e7881efe2517fc47fc40ef305bd)
       
 7. [Stripe OOP Payment Processing](https://github.com/StevenHunt/Logistic_Cafe/commit/2c92644d72c61a47c5ed8cc3e3d2aefe16de7c39)
       
-8. [update()](https://github.com/StevenHunt/Logistic_Cafe/commit/32fa43815377c32bee02e0f1994d22a11c6fbad0)
+8. [update(): update_product.php](https://github.com/StevenHunt/Logistic_Cafe/commit/32fa43815377c32bee02e0f1994d22a11c6fbad0)
 
 ---
      
