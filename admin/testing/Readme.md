@@ -23,9 +23,9 @@ I designed these test classes to show how implementing an OOP model would help a
 with PHP and SQL. 
       
 **Taking an OOP approached to this project will address:** 
-  *Redundancy (Dont Repeat Yourself (DRY) method)
-  *Modularization
-  *Focus on manipulation of the data > logic
+  1. Redundancy (Dont Repeat Yourself (DRY) method)
+  2. Modularization
+  3. Focus on manipulation of the data > logic
     
 **Backbone of the test cases:** 
 
