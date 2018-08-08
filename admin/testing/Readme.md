@@ -26,6 +26,10 @@ with PHP and SQL.
   1. Redundancy (Dont Repeat Yourself (DRY) method)
   2. Modularization
   3. Focus on manipulation of the data > logic
+  
+  
+  ---
+  ---
     
 **Backbone of the test cases:** 
 
