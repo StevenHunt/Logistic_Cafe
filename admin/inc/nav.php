@@ -1,6 +1,13 @@
 			<div class="menu-wrap">
 				<div id="mobnav-btn">Menu <i class="fa fa-bars"></i></div>
-				<ul class="sf-menu">
+				<ul class="sf-menu">	
+				<li>
+						<a href="#">Products</a>
+						<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
+						<ul>
+							<li><a href="index.php">Menu Items</a></li>
+						</ul>
+					</li>
 					<li>
 						<a href="#">Menus</a>
 						<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
@@ -9,15 +16,6 @@
 							<li><a href="addcategory.php">Add Menus</a></li>
 						</ul>
 					</li>
-					<li>
-						<a href="#">Menu Items</a>
-						<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
-						<ul>
-							<li><a href="products.php">View Menu Items</a></li>
-							<li><a href="addproduct.php">Add Menu Items</a></li>
-						</ul>
-					</li>
-
 					<li>
 						<a href="#">Orders</a>
 						<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
@@ -30,6 +28,12 @@
 						<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
 						<ul>
 							<li><a href="customers.php">View Customers</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Reviews</a>
+						<div class="mobnav-subarrow"><i class="fa fa-plus"></i></div>
+						<ul>
 							<li><a href="reviews.php">View Reviews</a></li>
 						</ul>
 					</li>
