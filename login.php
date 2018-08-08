@@ -1,7 +1,9 @@
 <?php 
+
     session_start();
     require_once 'config/connect.php';
-
+    
+    $page_title = 'Register | Login';
     include 'inc/header.php'; 
     include 'inc/nav.php'; 
 ?>
@@ -12,21 +14,23 @@
 		<div class="content-blog">
 			<div class="container">
 				<div class="row">
-					<div class="page_header text-center">
-						<h2>Logistic Cafe & Grill</h2>
-						<p> Your neighborhood Bistro</p>
-					</div>
+                    <br /><br />
 					<div class="col-md-12">
                         <div class="row shop-login">
                             <div class="col-md-6">
                                 <div class="box-content">
                                     <h3 class="heading text-center">Login</h3>
                                     <div class="clearfix space40"></div>
+                                    
                                     <?php if(isset($_GET['message'])){
                                             if($_GET['message'] == 1){
-                                     ?><div class="alert alert-danger" role="alert"> <?php echo "Invalid Login Credentials"; ?> </div>
+                                     ?>
+                                    
+                                    <div class="alert alert-danger" role="alert"> 
+                                        <?php echo "Invalid Login Credentials"; ?> </div>
 
                                      <?php } }?>
+                                    
                                     <form class="logregform" method="post" action="loginprocess.php">
                                         <div class="row">
                                             <div class="form-group">

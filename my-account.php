@@ -9,6 +9,7 @@
 		header('location: login.php');
 	}
 
+    $page_title = "Recent Orders"; 
     include 'inc/header.php'; 
     include 'inc/nav.php'; 
 
@@ -34,16 +35,15 @@
                         ?>
 					</div>
 					<div class="col-md-12">
-                        <h3>Recent Orders</h3>
+                        
                         <br>
-                        <table class="cart-table account-table table table-bordered">
-                            
+                        
+                        <table class="cart-table account-table table table-bordered">    
                             <thead>
                                 <tr>
-                                    <th>Order</th>
+                                    <th>Order #</th>
                                     <th>Date</th>
                                     <th>Status</th>
-                                    <th>Payment Mode</th>
                                     <th>Total</th>
                                     <th></th>
                                 </tr>
@@ -52,7 +52,8 @@
                             <tbody>
                                 
                                 <?php
-                                    $ordsql = "SELECT * FROM orders 
+                                    $ordsql = "SELECT * 
+                                               FROM orders 
                                                WHERE uid='$uid'";
 
                                     $ordres = mysqli_query($connection, $ordsql);
@@ -68,10 +69,7 @@
                                     </td>
                                     <td>
                                         <?php echo $ordr['orderstatus']; ?>			
-                                    </td>
-                                    <td>
-                                        <?php echo $ordr['paymentmode']; ?>
-                                    </td>
+                                    </td>      
                                     <td>
                                         $<?php echo $ordr['totalprice']; ?>
                                     </td>

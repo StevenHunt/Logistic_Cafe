@@ -4,7 +4,7 @@
     session_start();
 
     require_once 'config/connect.php';
-    include 'inc/header.php'; 
+    include 'inc/index_header.php'; 
     include 'inc/nav.php'; 
 
     if(isset($_GET['id']) & !empty($_GET['id'])) {
@@ -83,12 +83,18 @@
                                 <div class="product-meta">
                                     <span>Categories: 
                                     <?php 
-                                        $prodcatsql = "SELECT * FROM category WHERE id={$prodr['catid']}"; 
+                                        $prodcatsql = "SELECT * 
+                                                       FROM category 
+                                                       WHERE id={$prodr['catid']}";
+                                        
                                         $prodcatres = mysqli_query($connection, $prodcatsql);
                                         $prodcatr = mysqli_fetch_assoc($prodcatres);
-                                        ?>
-                                        <a href="#"><?php echo $prodcatr['name']; ?></a>
-                                    </span><br>
+                                    ?>
+                                        <a href="menu.php?id=<?php echo $prodcatr['id']; ?>"><?php echo $prodcatr['name']; ?></a>
+                                    </span>
+                                    
+                                    <br>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -96,9 +102,10 @@
 					   
                         <div class="tab-style3">
 				        
-                        <!-- Nav Tabs -->
+                        <!-- Navigation Tabs -->
 				        <div class="align-center mb-40 mb-xs-30">
                             <ul class="nav nav-tabs tpl-minimal-tabs animate">
+                                
                                 <li class="active col-md-6">
 									<a aria-expanded="true" href="#mini-one" data-toggle="tab">Overview</a>
                                 </li>
@@ -106,6 +113,7 @@
 				                <li class="col-md-6">
 									<a aria-expanded="false" href="#mini-three" data-toggle="tab">Reviews</a>
 				                </li>
+                                
 							</ul>
 						</div>
                             
@@ -120,18 +128,21 @@
                                 
 								<div class="col-md-12">
                                     <?php
+                                
                                         $revcountsql = "SELECT count(*) AS count 
                                                         FROM reviews r 
                                                         WHERE r.pid=$id";
 
                                         $revcountres = mysqli_query($connection, $revcountsql);
                                         $revcountr = mysqli_fetch_assoc($revcountres);
-
                                      ?>
+                                    
 									<h4 class="uppercase space35"><?php echo $revcountr['count']; ?> Reviews for <?php echo substr($prodr['name'], 0, 20); ?></h4>
                                     
 									<ul class="comment-list">
+                                        
                                         <?php 
+                                            
                                             $selrevsql = "SELECT u.firstname, u.lastname, r.`timestamp`, r.review 
                                                           FROM reviews r 
                                                           JOIN usersmeta u 

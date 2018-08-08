@@ -1,22 +1,20 @@
 <!DOCTYPE html>
-<!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
-<!--[if IE 9]>			<html class="ie ie9"> <![endif]-->
-<!--[if gt IE 9]><!-->	<html> <!--<![endif]-->
+<html>
 <head>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta name="keywords" content="HTML5 Template" />
 	<meta name="description" content="">
-	<meta name="author" content="">
-
-	<title>Shop Home Page - PHP Ecommerce</title>
-
-	<!-- Mobile Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="Steven Hunt - Logistic Solutions">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="images/favicon.png">
+    
+	<!-- Title --> 
+	<title> LCG - Admin Dashboard</title>
 
 	<!-- CSS -->
 	<link rel="stylesheet" href="../css/bootstrap.css">
@@ -33,25 +31,23 @@
 	<link rel="stylesheet" href="../css/style.css">
 	<link rel="stylesheet" href="../css/light.css">
 	<link rel="stylesheet" href=".//css/responsive.css">
+        <link rel="stylesheet" href="libs/css/custom.css" />
 
 	<!-- JS Font Script -->
 	<script src="http://use.edgefonts.net/bebas-neue.js"></script>
 
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<![endif]-->
-
 	<!-- Modernizer -->
 	<script src="js/modernizr.custom.js"></script>
+ 
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
 </head>
 <body class="multi-page">
 
 <div id="wrapper" class="wrapper">
-	<!-- HEADER -->
+
+    <!-- HEADER -->
 	<header id="header2">
 		<div class="container">
 			<div class="row">
@@ -64,3 +60,12 @@
 					</div>
 				</div>
 			</div>
+			
+            <?php
+                // Title 
+                echo "<div class='page-header'>
+                        <h1>{$page_title}</h1>
+                    </div>";
+            ?>
+
+

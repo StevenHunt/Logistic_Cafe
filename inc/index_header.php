@@ -68,7 +68,7 @@
                 // Header Title 
                 echo "
                 <div class='page-header page_header text-center'>
-                    <h1> L C <span style='color:#ef7c00'> &amp; </span> G - {$page_title}</h1> <br />
-                    <p> {$sub_title} </p>
+                    <h1> Logistic cafe <span style='color:#ef7c00'> &amp; </span> Grill </h1> <br />
+                    <p> Your neighborhood bistro</p>
                 </div>";
             ?>

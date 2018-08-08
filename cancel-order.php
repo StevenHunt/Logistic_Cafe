@@ -1,7 +1,10 @@
 <?php
+
 	ob_start();
 	session_start();
 	require_once 'config/connect.php';
+
+    $page_title = 'Cancel Order'; 
 
 	if(!isset($_SESSION['customer']) & empty($_SESSION['customer'])) {
 		header('location: login.php');
@@ -22,9 +25,11 @@
         $canres = mysqli_query($connection, $cansql) or die(mysqli_error($connection));
         if($canres){
                 
-            $ordupd = "UPDATE orders SET orderstatus='Cancelled' WHERE id=$id";
+            $ordupd = "UPDATE orders 
+                       SET orderstatus='Cancelled' 
+                       WHERE id=$id";
                 
-            if(mysqli_query($connection, $ordupd)){
+            if(mysqli_query($connection, $ordupd)) {
                   header('location: my-account.php');
             }
         }
@@ -42,7 +47,6 @@
     <section id="content">
 		<div class="content-blog">
             <div class="page_header text-center">
-				<h2>Cancel Order</h2>
 				<p>Do you want to cancel your order?</p>
             </div>
             <form method="post">
@@ -50,9 +54,7 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3">
                             <div class="billing-details">
-                                        
-                                <h3 class="uppercase">Cancel Order</h3>
-
+                                    
                                 <table class="cart-table account-table table table-bordered">
                                     <thead>
                                         <tr>

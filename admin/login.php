@@ -1,11 +1,14 @@
 <?php 
+
     session_start();
     require_once '../config/connect.php'; 
 
     if(isset($_POST) & !empty($_POST)) {
+        
         $email = mysqli_real_escape_string($connection, $_POST['email']);
         $password = md5($_POST['password']);
-        $sql = "SELECT * FROM admin 
+        $sql = "SELECT * 
+                FROM admin 
                 WHERE email='$email' AND password='$password'";
         
         $result = mysqli_query($connection, $sql) or die(mysqli_error($connection));
@@ -160,9 +163,6 @@
         </section>
 
         <div class="clearfix space70"></div>
-
-        <!-- FOOTER -->
-        <?php include('inc/footer.php'); ?>
 
     </div> <!-- Close wrapper --> 
 

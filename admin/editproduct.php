@@ -1,23 +1,29 @@
 <?php
+
 	session_start();
 	require_once '../config/connect.php';
-	if(!isset($_SESSION['email']) & empty($_SESSION['email'])){
+
+    if(!isset($_SESSION['email']) & empty($_SESSION['email'])) {
 		header('location: login.php');
 	}
 
-	if(isset($_GET) & !empty($_GET)){
+	if(isset($_GET) & !empty($_GET)) {
 		$id = $_GET['id'];
-	}else{
+	}
+
+    else { 
 		header('location: products.php');
 	}
 
-	if(isset($_POST) & !empty($_POST)){
+	if(isset($_POST) & !empty($_POST)) {
+        
 		$prodname = mysqli_real_escape_string($connection, $_POST['productname']);
 		$description = mysqli_real_escape_string($connection, $_POST['productdescription']);
 		$category = mysqli_real_escape_string($connection, $_POST['productcategory']);
 		$price = mysqli_real_escape_string($connection, $_POST['productprice']);
 
-		if(isset($_FILES) & !empty($_FILES)){
+		if(isset($_FILES) & !empty($_FILES)) {
+            
 			$name = $_FILES['productimage']['name'];
 			$size = $_FILES['productimage']['size'];
 			$type = $_FILES['productimage']['type'];
@@ -26,48 +32,73 @@
 			$max_size = 10000000;
 			$extension = substr($name, strpos($name, '.') + 1);
 
-			if(isset($name) && !empty($name)){
-				if(($extension == "jpg" || $extension == "jpeg") && $type == "image/jpeg" && $size<=$max_size){
+			if(isset($name) && !empty($name)) {
+                
+				if(($extension == "jpg" || $extension == "jpeg") && $type == "image/jpeg" && $size<=$max_size) {
+                    
 					$location = "uploads/";
 					$filepath = $location.$name;
-					if(move_uploaded_file($tmp_name, $filepath)){
+					
+                    if(move_uploaded_file($tmp_name, $filepath)) {
 						$smsg = "Uploaded Successfully";
-					}else{
+					}
+                    
+                    else {
 						$fmsg = "Failed to Upload File";
 					}
-				}else{
+				}
+                
+                else {
 					$fmsg = "Only JPG files are allowed and should be less that 1MB";
 				}
-			}else{
+			}
+            
+            else {
 				$fmsg = "Please Select a File";
 			}
-		}else{
+		}
+        
+        else {
 			$filepath = $_POST['filepath'];
 		}	
 
-		$sql = "UPDATE products SET name='$prodname', description='$description', catid='$category', price='$price', thumb='$filepath' WHERE id = $id";
-		$res = mysqli_query($connection, $sql);
-		if($res){
+		$sql = "UPDATE products 
+                SET name='$prodname', description='$description', catid='$category', price='$price', thumb='$filepath' 
+                WHERE id = $id";
+		
+        $res = mysqli_query($connection, $sql);
+		
+        if($res) {
 			$smsg = "Product Updated";
-		}else{
+		}
+        
+        else {
 			$fmsg = "Failed to Update Product";
 		}
 	}
 ?>
-<?php include 'inc/header.php'; ?>
-<?php include 'inc/nav.php'; ?>
+
+<?php 
+
+	$page_title = "Edit Product";
+	include 'inc/header.php'; 
+	include 'inc/nav.php';
+?>
 	
 <section id="content">
 	<div class="content-blog">
 		<div class="container">
-		<?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
-		<?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
-			<?php 	
+		
+            <?php if(isset($fmsg)){ ?><div class="alert alert-danger" role="alert"> <?php echo $fmsg; ?> </div><?php } ?>
+		    <?php if(isset($smsg)){ ?><div class="alert alert-success" role="alert"> <?php echo $smsg; ?> </div><?php } ?>
+			
+            <?php 	
 				$sql = "SELECT * FROM products WHERE id=$id";
 				$res = mysqli_query($connection, $sql); 
 				$r = mysqli_fetch_assoc($res); 
 			?>
-			<form method="post" enctype="multipart/form-data">
+			
+            <form method="post" enctype="multipart/form-data">
 			  <div class="form-group">
 			  <input type="hidden" name="filepath" value="<?php echo $r['thumb']; ?>">
 			    <label for="Productname">Product Name</label>
@@ -81,7 +112,8 @@
 			  <div class="form-group">
 			    <label for="productcategory">Product Category</label>
 			    <select class="form-control" id="productcategory" name="productcategory">
-			    <?php 	
+			    
+                <?php 	
 					$catsql = "SELECT * FROM category";
 					$catres = mysqli_query($connection, $catsql); 
 					while ($catr = mysqli_fetch_assoc($catres)) {
@@ -91,12 +123,12 @@
 				</select>
 			  </div>
 			  
-
 			  <div class="form-group">
 			    <label for="productprice">Product Price</label>
 			    <input type="text" class="form-control" name="productprice" id="productprice" placeholder="Product Price" value="<?php echo $r['price']; ?>">
 			  </div>
-			  <div class="form-group">
+			  
+              <div class="form-group">
 			    <label for="productimage">Product Image</label>
 			    <?php if(isset($r['thumb']) & !empty($r['thumb'])){ ?>
 			    <br>
@@ -113,6 +145,6 @@
 			
 		</div>
 	</div>
-
 </section>
-<?php include 'inc/footer.php' ?>
+</body> 
+</html> 

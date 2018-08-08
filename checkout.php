@@ -1,4 +1,5 @@
 <?php
+
 	ob_start();
 	session_start();
 
@@ -8,6 +9,7 @@
 		header('location: login.php');
 	}
 
+    $page_title = 'Checkout'; 
     include 'inc/header.php'; 
     include 'inc/nav.php'; 
 
@@ -15,8 +17,6 @@
     $cart = $_SESSION['cart'];
 
     if(isset($_POST) & !empty($_POST)) {
-        if($_POST['agree'] == true) {
-            $country = filter_var($_POST['country'], FILTER_SANITIZE_STRING);
             $fname = filter_var($_POST['fname'], FILTER_SANITIZE_STRING);
             $lname = filter_var($_POST['lname'], FILTER_SANITIZE_STRING);
             $company = filter_var($_POST['company'], FILTER_SANITIZE_STRING);
@@ -28,17 +28,17 @@
             $payment = filter_var($_POST['payment'], FILTER_SANITIZE_STRING);
             $zip = filter_var($_POST['zipcode'], FILTER_SANITIZE_NUMBER_INT);
 
-            $sql = "SELECT * FROM usersmeta 
+            $sql = "SELECT * FROM usersmeta  
                     WHERE uid=$uid";
 
             $res = mysqli_query($connection, $sql);
             $r = mysqli_fetch_assoc($res);
             $count = mysqli_num_rows($res);
-
+            
             if($count == 1) {
 
-                //update data in usersmeta table
-                $usql = "UPDATE usersmeta SET country='$country', firstname='$fname', lastname='$lname', address1='$address1', address2='$address2', city='$city', state='$state',  zip='$zip', company='$company', mobile='$phone' WHERE uid=$uid";
+                // Update: Usermeta table
+                $usql = "UPDATE usersmeta SET firstname='$fname', lastname='$lname', address1='$address1', address2='$address2', city='$city', state='$state',  zip='$zip', company='$company', mobile='$phone' WHERE uid=$uid";
 
                 $ures = mysqli_query($connection, $usql) or die(mysqli_error($connection));
 
@@ -47,7 +47,9 @@
                     $total = 0;
 
                     foreach ($cart as $key => $value) {
-                        $ordsql = "SELECT * FROM products 
+                        
+                        $ordsql = "SELECT * 
+                                   FROM products 
                                    WHERE id=$key";
 
                         $ordres = mysqli_query($connection, $ordsql);
@@ -66,7 +68,8 @@
 
                         foreach ($cart as $key => $value) {
 
-                            $ordsql = "SELECT * FROM products 
+                            $ordsql = "SELECT * 
+                                       FROM products 
                                        WHERE id=$key";
 
                             $ordres = mysqli_query($connection, $ordsql);
@@ -88,8 +91,8 @@
 
             else {
 
-                //insert data in usersmeta table
-                $isql = "INSERT INTO usersmeta (country, firstname, lastname, address1, address2, city, state, zip, company, mobile, uid) VALUES ('$country', '$fname', '$lname', '$address1', '$address2', '$city', '$state', '$zip', '$company', '$phone', '$uid')";
+                // Insert: Into Usermeta table
+                $isql = "INSERT INTO usersmeta (firstname, lastname, address1, address2, city, state, zip, company, mobile, uid) VALUES ('$fname', '$lname', '$address1', '$address2', '$city', '$state', '$zip', '$company', '$phone', '$uid')";
 
                 $ires = mysqli_query($connection, $isql) or die(mysqli_error($connection));
 
@@ -99,14 +102,16 @@
 
                     foreach ($cart as $key => $value) {
 
-                        $ordsql = "SELECT * FROM products 
+                        $ordsql = "SELECT * 
+                                   FROM products 
                                    WHERE id=$key";
 
                         $ordres = mysqli_query($connection, $ordsql);
                         $ordr = mysqli_fetch_assoc($ordres);
                         $total = $total + ($ordr['price']*$value['quantity']);
                     }
-
+                    
+                    // Insert: Into orders table
                     echo $iosql = "INSERT INTO orders (uid, totalprice, orderstatus, paymentmode) VALUES ('$uid', '$total', 'Order Placed', '$payment')";
 
                     $iores = mysqli_query($connection, $iosql) or die(mysqli_error($connection));
@@ -116,7 +121,10 @@
                         $orderid = mysqli_insert_id($connection);
                         foreach ($cart as $key => $value) {
 
-                            $ordsql = "SELECT * FROM products WHERE id=$key";
+                            $ordsql = "SELECT * 
+                                       FROM products 
+                                       WHERE id=$key";
+                            
                             $ordres = mysqli_query($connection, $ordsql);
                             $ordr = mysqli_fetch_assoc($ordres);
 
@@ -124,7 +132,7 @@
                             $productprice = $ordr['price'];
                             $quantity = $value['quantity'];
 
-
+                            // Insert: Into orderitems table
                             $orditmsql = "INSERT INTO orderitems (pid, orderid, productprice, pquantity) VALUES ('$pid', '$orderid', '$productprice', '$quantity')";
                             $orditmres = mysqli_query($connection, $orditmsql) or die(mysqli_error($connection));
 
@@ -138,9 +146,8 @@
             }
         }
 
-    }
-
-    $sql = "SELECT * FROM usersmeta 
+    $sql = "SELECT * 
+            FROM usersmeta 
             WHERE uid=$uid";
 
     $res = mysqli_query($connection, $sql);
@@ -151,72 +158,150 @@
     <!-- SHOP CONTENT -->
     <section id="content">
     <div class="content-blog">
-        <div class="page_header text-center">
-            <h2>Checkout</h2>
-            <p>L C &amp; G</p>
-        </div>
 
-    <form method="post">
+    <form method="post" onsubmit="
+    
+   						if(document.getElementById('agree').checked) { 
+   							return true; 
+   						} 
+   						
+   						else { 
+   							alert('Please indicate that you have read and agree to the Terms and Conditions'); 
+   							return false; 
+   						}">
+ 	
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
 				<div class="billing-details">
 				    <h3 class="uppercase">Billing Details</h3>
                     
-				            <div class="space30"></div>
-							<label class="">Country </label>
-							<select name="country" class="form-control">
-								<option value="">Select Country</option>
-								<option value="USA">United States </option>
-							</select>
-                    
-							<div class="clearfix space20"></div>
-                    
+				      <div class="space30"></div>
+
 							<div class="row">
 								<div class="col-md-6">
 									<label>First Name </label>
-									<input name="fname" class="form-control" placeholder="" value="<?php if(!empty($r['firstname'])){ echo $r['firstname']; } elseif(isset($fname)){ echo $fname; } ?>" type="text">
+									<input name="fname" class="form-control" placeholder="" value=" <?php
+                                            if(!empty($r['firstname'])) { 
+                                                echo $r['firstname']; 
+                                            } 
+                                            
+                                            elseif(isset($fname)) { 
+                                                echo $fname; 
+                                            } 
+                                        ?>" type="text">
 								</div>
+                                
 								<div class="col-md-6">
 									<label>Last Name </label>
-									<input name="lname" class="form-control" placeholder="" value="<?php if(!empty($r['lastname'])){ echo $r['lastname']; }elseif(isset($lname)){ echo $lname; } ?>" type="text">
+									<input name="lname" class="form-control" placeholder="" value=" <?php
+                                            if(!empty($r['lastname'])) { 
+                                                echo $r['lastname']; 
+                                            } 
+                                            
+                                            elseif(isset($lname)) { 
+                                                echo $lname; 
+                                            } 
+                                        ?>" type="text">
 								</div>
 							</div>
-							<div class="clearfix space20"></div>
+							
+                            <div class="clearfix space20"></div>
 							<label>Company Name</label>
-							<input name="company" class="form-control" placeholder="" value="<?php if(!empty($r['company'])){ echo $r['company']; }elseif(isset($company)){ echo $company; } ?>" type="text">
-							<div class="clearfix space20"></div>
+							<input name="company" class="form-control" placeholder="" value=" <?php
+                                            if(!empty($r['company'])) { 
+                                                echo $r['company']; 
+                                            } 
+                                            
+                                            elseif(isset($company)) { 
+                                                echo $company; 
+                                            } 
+                                        ?>" type="text">
+							
+                            <div class="clearfix space20"></div>
 							<label>Address </label>
-							<input name="address1" class="form-control" placeholder="Street address" value="<?php if(!empty($r['address1'])){ echo $r['address1']; } elseif(isset($address1)){ echo $address1; } ?>" type="text">
+							<input name="address1" class="form-control" placeholder="Street Address" value=" <?php
+                                            if(!empty($r['address1'])) { 
+                                                echo $r['address1']; 
+                                            } 
+                                            
+                                            elseif(isset($address1)) { 
+                                                echo $address1; 
+                                            } 
+                                        ?>" type="text">
+                    
 							<div class="clearfix space20"></div>
-							<input name="address2" class="form-control" placeholder="Apartment, suite, unit etc. (optional)" value="<?php if(!empty($r['address2'])){ echo $r['address2']; }elseif(isset($address2)){ echo $address2; } ?>" type="text">
+							<input name="address2" class="form-control" placeholder="Apt, Suite, Unit, etc. (Optional)" value=" <?php
+                                            if(!empty($r['address2'])) { 
+                                                echo $r['address2']; 
+                                            } 
+                                            
+                                            elseif(isset($address2)) { 
+                                                echo $address2; 
+                                            } 
+                                        ?>" type="text">
+                    
 							<div class="clearfix space20"></div>
 							<div class="row">
 								<div class="col-md-4">
 									<label>City </label>
-									<input name="city" class="form-control" placeholder="City" value="<?php if(!empty($r['city'])){ echo $r['city']; }elseif(isset($city)){ echo $city; } ?>" type="text">
+									<input name="city" class="form-control" placeholder="City" value=" <?php
+                                            if(!empty($r['city'])) { 
+                                                echo $r['city']; 
+                                            } 
+                                            
+                                            elseif(isset($city)) { 
+                                                echo $city; 
+                                            } 
+                                        ?>" type="text">
 								</div>
+                                
 								<div class="col-md-4">
 									<label>State</label>
-									<input name="state" class="form-control" value="<?php if(!empty($r['state'])){ echo $r['state']; }elseif(isset($state)){ echo $state; } ?>" placeholder="State" type="text">
+									<input name="state" class="form-control" placeholder="State" value=" <?php
+                                            if(!empty($r['state'])) { 
+                                                echo $r['state']; 
+                                            } 
+                                            
+                                            elseif(isset($state)) { 
+                                                echo $state; 
+                                            } 
+                                        ?>" type="text">
 								</div>
+                                
 								<div class="col-md-4">
 									<label>Postcode </label>
-									<input name="zipcode" class="form-control" placeholder="Postcode / Zip" value="<?php if(!empty($r['zip'])){ echo $r['zip']; }elseif(isset($zip)){ echo $zip; } ?>" type="text">
+									<input name="zipcode" class="form-control" placeholder="Postal Code" value=" <?php
+                                            if(!empty($r['zip'])) { 
+                                                echo $r['zip']; 
+                                            } 
+                                            
+                                            elseif(isset($zip)) { 
+                                                echo $zip; 
+                                            } 
+                                        ?>" type="text">
 								</div>
 							</div>
-							<div class="clearfix space20"></div>
-							<label>Phone </label>
-							<input name="phone" class="form-control" id="billing_phone" placeholder="" value="<?php if(!empty($r['mobile'])){ echo $r['mobile']; }elseif(isset($phone)){ echo $phone; } ?>" type="text">
-						
+							
+                            <div class="clearfix space20"></div>
+				                <label>Phone </label>
+							     <input name="phone" class="form-control" id="billing_phone" placeholder="" value="<?php                         if(!empty($r['mobile'])) { 
+                                                echo $r['mobile']; 
+                                            }
+                                            
+                                            elseif(isset($phone)) { 
+                                                echo $phone; 
+                                            } 
+                                        ?>" type="text">
 					</div>
-				</div>
-				
+                </div>
 			</div>
         
             <br />
             <br />
             <br />
+        
+            <!-- ORDER DETAILS --> 
 			
 			<div class="cart_totals">
 				<div class="col-md-6 push-md-6 no-padding">
@@ -253,33 +338,109 @@
 			
 			<div class="payment-method">
 				<div class="row">
-					
 						<div class="col-md-4">
-							<input name="payment" id="radio1" class="css-checkbox" type="radio" value="VISA"><span>Visa</span> <br /> 
-                            <input name="payment" id="radio2" class="css-checkbox" type="radio" value="MC"><span>MasterCard</span> <br /> 
-                            <input name="payment" id="radio3" class="css-checkbox" type="radio" value="AMEX"><span>American Express</span> 
+                                <table>
+                                <tr>
+                                    <td align="left" height="45">
+                                        
+                                        <input type="radio" class="radioBtn" name="Radio" id="Radio" value="Cash" required checked> Cash on Delivery <br /> <br />
+
+                                        <input class="radioBtn" type="radio" name="Radio" id="Radio" value="Card" required > Credit / Debit Card 
+                                    </td>
+                                </tr>
+                            </table>
                             
                             <br />
                             <br />
                             
-                            <input name="payment" id="radio4" class="css-checkbox" type="radio" value="Cash"><span>Cash on Delivery / Pickup</span>
-						</div>
-					
-				</div>
-				<div class="space30"></div>
-				
-                    <script> 
-                         function checkTerms() {
-                             if($('input[name="checkboxG2"]').is(":checked") {
-                                 $('input[name="submitname"]').attr('disabled', 'disabled');
-                             }
-                             else {
-                                 $('input[name="submitname"]').removeAttr('disabled');
-                             }
-                         }
-                    </script>
+                            <div class="stripe" style="display:none">
+                                
+                                <script src="https://js.stripe.com/v3/"></script>
+
+                                <form action="/charge" method="post" id="payment-form">
+                                  <div class="form-row">
+                 
+                                    <div id="card-element">
+                                       <!-- Stripe element --> 
+                                    </div>
+
+                                  </div>
+
+                                </form> 
+                            
+                            </div>
+                            
+                            <script> 
+                                $('input[type="radio"]').click(function(){
+                                    if($(this).attr("value")=="Cash"){
+                                        $(".stripe").hide('slow');
+                                    }
+                                    if($(this).attr("value")=="Card"){
+                                        $(".stripe").show('slow');
+
+                                    }        
+                                });
+                                $('input[type="radio"]').trigger('click');
+                                
+                                /* STRIPE CLIENT ---------------------------------------- */ 
+                                
+                                // Create client:
+                                var stripe = Stripe('pk_test_g6do5S237ekq10r65BnxO6S0');
+
+                                // Create an instance (elements)
+                                var elements = stripe.elements();
+
+                                // Styling: 
+                                var style = {
+                                    base: {
+                                        color: '#32325d',
+                                        lineHeight: '18px',
+                                        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+                                        fontSmoothing: 'antialiased',
+                                        fontSize: '16px',
+                                        '::placeholder': {
+                                            color: '#aab7c4'
+                                        }
+                                    },
+                                };
+
+                                // Create an instance (card)
+                                var card = elements.create('card', {style: style});
+
+                                // Add an instance of the card Element into the `card-element` <div>.
+                                card.mount('#card-element');
+                                
+                                // Handle form submission.
+                                var form = document.getElementById('payment-form');
+                                
+                                form.addEventListener('submit', function(event) {
+                                    event.preventDefault();
+
+                                    stripe.createToken(card).then(function(result) {
+                                    
+                                    if (result.error) {
+                                        
+                                        // Inform the user if there was an error.
+                                        var errorElement = document.getElementById('card-errors');
+                                        errorElement.textContent = result.error.message;
+                                    } 
+                                    
+                                    else {
+                                        
+                                      // Send the token to your server.
+                                      stripeTokenHandler(result.token);
+                                    }
+                                  });
+                                });
+                                
+                            </script>
+                            
+                            <br />
+                            <br />
+                            
+				    <div class="space30"></div>
                 
-					<input name="agree" id="checkboxG2" class="css-checkbox" type="checkbox" value="true" onClick="checkTerms();"/>
+					<input type="checkbox" name="checkbox" class="css-checkbox" value="check" id="agree"/>
                         <span>I've read and accept the 
                             <a href="terms.html" onclick="window.open(this.href,'nom_Popup','height=400 , width=400 ,location=no ,resizable=yes ,scrollbars=yes');return false;"> terms &amp; conditions</a>
                         </span>
@@ -294,8 +455,8 @@
                 <br />
 			</div>
 		</div>		
-</form>		
-		</div>
-	</section>
+    </form>		
+</div>
+</section>
 	
 <?php include 'inc/footer.php' ?>

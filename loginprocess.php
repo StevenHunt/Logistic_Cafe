@@ -20,7 +20,7 @@
                 $_SESSION['customer'] = $email;
                 $_SESSION['customerid'] = $r['id'];
                 
-                header("location: cart.php");
+                header("location: my-account.php");
             }
 
             else {

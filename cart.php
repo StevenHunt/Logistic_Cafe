@@ -1,7 +1,11 @@
-<?php 
+<?php
+
     session_start();
     require_once 'config/connect.php';
 
+    $page_title = 'cart';
+    $sub_title = 'Review and proceed to checkout'; 
+    
     include 'inc/header.php'; 
     include 'inc/nav.php'; 
 
@@ -14,10 +18,7 @@
         <div class="content-blog">
 			<div class="container">
 				<div class="row">
-					<div class="page_header text-center">
-						<h2>Cart</h2>
-						<p>Review and proceed to checkout</p>
-					</div>
+
                     
 					<div class="col-md-12">
                         <table class="cart-table table table-bordered">
@@ -67,7 +68,11 @@
                                     } ?>
                                 <tr>
                                     <td colspan="6" class="actions">
-                                        <div class="col-md-6"> <!-- Area for coupon code eventually --> </div>
+                                        <div class="col-md-6"> 
+                                            
+                                            <!-- Possible promo code area --> 
+                                            
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="cart-btn">
                                                 <a href="checkout.php" class="button btn-md" >Checkout</a>
@@ -92,7 +97,7 @@
                                             <td>
                                                 <!-- Delivery Estimator (Based on Location)
 
-                                                    ** ENTER CODE HERE **
+                                                    ** @NORMA & @LUPE ENTER CODE HERE **
 
                                                 --> 
                                                 <p> Based on Location </p> 			
@@ -112,6 +117,5 @@
 			</div> <!-- close container --> 
 		</div> <!-- Close content-blog --> 
 	</section>
-
 
 <?php include 'inc/footer.php' ?>
