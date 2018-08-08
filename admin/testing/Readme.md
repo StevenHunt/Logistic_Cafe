@@ -23,64 +23,64 @@ I designed these test classes to show how implementing an OOP model would help a
 with PHP and SQL. 
       
 **Taking an OOP approached to this project will address:** 
-          *Redundancy (Dont Repeat Yourself (DRY) method)
-          *Modularization
-          *Focus on manipulation of the data > logic
+  *Redundancy (Dont Repeat Yourself (DRY) method)
+  *Modularization
+  *Focus on manipulation of the data > logic
     
 **Backbone of the test cases:** 
 
 **============ DATABASE ======================**
       
 **Objects:** 
-*Private:*
-..1. host: database host address
-..2. name: database name
-..3. username: database username
-..4. password: database password
-*Public:*
-..1. conn: Object used to connect to the server
+  * *Private:*
+  1. host: database host address
+  2. name: database name
+  3. username: database username
+  4. password: database password
+  * *Public:*
+  1. conn: Object used to connect to the server
         
 **Methods:** 
-*Public:*
-..1. getConnection() : Method used to connect to server
+  * *Public:*
+  1. getConnection() : Method used to connect to server
       
-**============ CATEGORY CLASS ================
+**============ CATEGORY CLASS ================**
       
 *Access: categories table
       
 **Objects:**
-*Private:*
-..1. conn - Connection
-..2. table_name - Defines which table in the DB it will be accessing
-*Pubic:* 
-..1. id - column 
-..2. name - column 
+  * *Private:*
+  1. conn - Connection
+  2. table_name - Defines which table in the DB it will be accessing
+  * *Pubic:* 
+  1. id - column 
+  2. name - column 
       
 **Methods:** 
-..1. read(): Reads name and id based on id
-..2. readName(): Reads category name by id
+  1. read(): Reads name and id based on id
+  2. readName(): Reads category name by id
 
 **============ PRODUCT CLASS ==================**  
       
 **Objects:** 
-*Private:* 
-..1. conn - Connection
-..2. table_name - Defines which table in the DB it will be accessing  
-*Public:* 
-..1. id - column
-..2. name - column
-..3. price - column
-..4. description - column
-..5. catid - column
-..6. timestamp - column
+  * *Private:* 
+  1. conn - Connection
+  2. table_name - Defines which table in the DB it will be accessing  
+  * *Public:* 
+  1. id - column
+  2. name - column
+  3. price - column
+  4. description - column
+  5. catid - column
+  6. timestamp - column
             
 **Methods:** 
-*Public:* 
-..1. create(): Creates a new product
-..2. readAll(): Reads all products
-..3. countAll(): Counts the number of products
-..4. readOne(): Reads one specific product
-..5. update(): Updates a product
+  * *Public:* 
+  1. create(): Creates a new product
+  2. readAll(): Reads all products
+  3. countAll(): Counts the number of products
+  4. readOne(): Reads one specific product
+  5. update(): Updates a product
     
     
     
