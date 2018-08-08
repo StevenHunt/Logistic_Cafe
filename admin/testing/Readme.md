@@ -17,7 +17,8 @@
 7. [Stripe OOP Payment Processing](https://github.com/StevenHunt/Logistic_Cafe/commit/2c92644d72c61a47c5ed8cc3e3d2aefe16de7c39)
       
 8. [update()](https://github.com/StevenHunt/Logistic_Cafe/commit/32fa43815377c32bee02e0f1994d22a11c6fbad0)
-     
+
+---
      
 I designed these test classes to show how implementing an OOP model would help alleviate some common issues when coding
 with PHP and SQL. 
@@ -27,8 +28,6 @@ with PHP and SQL.
   2. Modularization
   3. Focus on manipulation of the data > logic
   
-  
-  ---
   ---
     
 **Backbone of the test cases:** 
