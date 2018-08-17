@@ -2,7 +2,7 @@
 class Database{
     
     // Database Creds:
-    private $host = "cst438.xxxxxxxxxxxxx.us-west-2.rds.amazonaws.com:3000";
+    private $host = "cst438.xxxxxxxxxxxxx.us-west-2.rds.amazonaws.com:3306";
     private $db_name = "lcg";
     private $username = "xxxx";
     private $password = "xxxx";
