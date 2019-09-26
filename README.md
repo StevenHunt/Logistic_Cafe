@@ -1,3 +1,4 @@
-eCommerce Website: Logistic Cafe & Grill
+# PHP / SQL eCommerce Site
 
-Source code for Logistic Solution's CST438 group project.
+- eCommerce Website: Logistic Cafe & Grill
+- Source code for Logistic Solution's CST438 group project.
